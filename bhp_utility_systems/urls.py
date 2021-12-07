@@ -75,13 +75,15 @@ urlpatterns = [
          name='switch_sites_url'),
     path('home/', HomeView.as_view(), name='home_url'),
     path('', HomeView.as_view(), name='home_url'),
+    path('bhp_utility_reports/', include('bhp_utility_reports.urls')),
+
 ]
 
 urlpatterns += [
     path('change-password/',
          auth_views.PasswordChangeView.as_view(
-            template_name='users/password_reset_change.html',
-            success_url='/'),
+             template_name='users/password_reset_change.html',
+             success_url='/'),
          name='change_password'
          ),
     # Forget Password
@@ -109,4 +111,3 @@ urlpatterns += [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
