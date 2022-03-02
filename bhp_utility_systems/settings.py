@@ -57,12 +57,12 @@ config = configparser.ConfigParser()
 config.read(CONFIG_PATH)
 
 # email configurations
-# EMAIL_BACKEND = config['email_conf'].get('email_backend')
-# EMAIL_HOST = config['email_conf'].get('email_host')
-# EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
-# EMAIL_PORT = config['email_conf'].get('email_port')
-# EMAIL_HOST_USER = config['email_conf'].get('email_user')
-# EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
+EMAIL_BACKEND = config['email_conf'].get('email_backend')
+EMAIL_HOST = config['email_conf'].get('email_host')
+EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
+EMAIL_PORT = config['email_conf'].get('email_port')
+EMAIL_HOST_USER = config['email_conf'].get('email_user')
+EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
 
 # Application definition
 
@@ -139,13 +139,11 @@ WSGI_APPLICATION = 'bhp_utility_systems.wsgi.application'
 mysql_config = configparser.ConfigParser()
 mysql_config.read(os.path.join(ETC_DIR, 'mysql.ini'))
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_EMAIL_VERIFICATION = "none"
-HOST = 'localhost' #mysql_config['mysql']['host']
-DB_USER = 'root' #mysql_config['mysql']['user']
-DB_PASSWORD = 'ms_admin' #mysql_config['mysql']['password']
-DB_NAME = 'utility' #mysql_config['mysql']['database']
-PORT = '3306' #mysql_config['mysql']['port']
+HOST = mysql_config['mysql']['host']
+DB_USER = mysql_config['mysql']['user']
+DB_PASSWORD = mysql_config['mysql']['password']
+DB_NAME = mysql_config['mysql']['database']
+PORT = mysql_config['mysql']['port']
 
 # DATABASES = {
 #     'default': {
