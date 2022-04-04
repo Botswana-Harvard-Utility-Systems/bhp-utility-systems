@@ -215,8 +215,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'bhp_utility_systems', 'static')
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# Dashboards
-
 DASHBOARD_URL_NAMES = {
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'procurement_url': 'procurement_dashboard:procurement_url',
