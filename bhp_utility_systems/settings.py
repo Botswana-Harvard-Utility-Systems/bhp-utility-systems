@@ -310,3 +310,10 @@ DASHBOARD_BASE_TEMPLATES = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
+
+Q_CLUSTER = {
+    'retry': 5,
+    'workers': 4,
+    'orm': 'default',
+}
+
