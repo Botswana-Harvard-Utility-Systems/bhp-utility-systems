@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
 import os
 import sys
-
-import configparser
-from django.core.management.color import color_style
 from pathlib import Path
+
+from django.core.management.color import color_style
 
 # from .logging import LOGGING
 style = color_style()
@@ -310,3 +310,14 @@ DASHBOARD_BASE_TEMPLATES = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
+
+Q_CLUSTER = {
+    'name': 'DjangORM',
+    'workers': 4,
+    'timeout': 90,
+    'retry': 120,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default',
+    'has_replica': True
+}
