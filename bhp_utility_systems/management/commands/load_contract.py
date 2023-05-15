@@ -31,19 +31,8 @@ class Command(BaseCommand):
                 end_date = dt.strptime(row.get('end_date', ''), '%Y-%m-%d').date() if row.get('end_date') else None
 
                 # Check for duplicate contract
-                duplicate_contract = Contract.objects.filter(
-                    identifier=employee_instance.identifier,
-                    duration=row.get('duration'),
-                    start_date=start_date,
-                    end_date=end_date,
-                    status=row.get('status')
-                ).exists()
 
-                if duplicate_contract:
-                    self.stderr.write(self.style.WARNING(f'Duplicate contract found for employee {row.get("Employee_code")}. Skipping row {counter + 1}.'))
-                    continue
-
-                contract = Contract(
+                contract = Contract.objects.update_or_create(
                     identifier=employee_instance.identifier,
                     duration=row.get('duration'),
                     start_date=start_date,
@@ -51,7 +40,6 @@ class Command(BaseCommand):
                     status=row.get('status'),
                     contract_ended=bool(row.get('contract_ended', False)),
                 )
-                contract.save()
 
                 counter += 1
                 print(f"Row {counter}")
