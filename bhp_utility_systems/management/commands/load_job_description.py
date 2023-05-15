@@ -22,13 +22,18 @@ class Command(BaseCommand):
             job_description_fields.pop('site', None)
 
             try:
-                department = Department.objects.get(pk=job_description_fields['department'])
+                department = Department.objects.get(
+                    dept_name=job_description_fields['department'][1],)
                 job_description_fields['department'] = department
             except Department.DoesNotExist:
-                self.stderr.write(self.style.WARNING(f'Department with id {job_description_fields["department"]} not found. Skipping row {job_description_fields["id"]}.'))
+                self.stderr.write(self.style.WARNING(
+                    f'Department with id {job_description_fields["department"]} not found. '
+                    'Skipping row {job_description_fields["id"]}.'))
                 continue
 
             job_description = JobDescription(**job_description_fields)
             job_description.save()
 
-        self.stdout.write(self.style.SUCCESS(f'Successfully loaded {len(job_descriptions_data)} JobDescription records'))
+        self.stdout.write(
+            self.style.SUCCESS(
+                f'Successfully loaded {len(job_descriptions_data)} JobDescription records'))
