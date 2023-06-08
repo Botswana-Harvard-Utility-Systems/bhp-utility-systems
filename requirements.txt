@@ -41,3 +41,4 @@ xhtml2pdf
 mysqlclient
 pandas
 django-crispy-forms
+notebook
