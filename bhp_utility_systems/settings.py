@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import configparser
 import os
 import sys
-from pathlib import Path
 
+import configparser
 from django.core.management.color import color_style
+from pathlib import Path
 
 # from .logging import LOGGING
 style = color_style()
@@ -62,7 +62,6 @@ EMAIL_HOST = config['email_conf'].get('email_host')
 EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
 EMAIL_PORT = config['email_conf'].get('email_port')
 EMAIL_HOST_USER = config['email_conf'].get('email_user')
-DEFAULT_FROM_EMAIL = config['email_conf'].get('email_user')
 EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
 
 # Application definition
@@ -99,7 +98,6 @@ INSTALLED_APPS = [
     'document_tracking.apps.AppConfig',
     'document_tracking_dashboard.apps.AppConfig',
     'django_admin_listfilter_dropdown',
-    'bhp_utility_reports.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
@@ -216,6 +214,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'bhp_utility_systems', 'static')
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+# Dashboards
+
 DASHBOARD_URL_NAMES = {
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'procurement_url': 'procurement_dashboard:procurement_url',
@@ -241,7 +241,6 @@ DASHBOARD_URL_NAMES = {
     'contract_listboard_url': 'cms_dashboard:contract_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'cms_url': 'cms_dashboard:cms_url',
-    'reports_url': 'cms_dashboard:reports_url',
 
     # Document tracking
     'document_dashboard_url': 'document_tracking_dashboard:document_dashboard_url',
@@ -261,11 +260,6 @@ DASHBOARD_URL_NAMES = {
     'timesheet_home_url': 'timesheet:timesheet_home_url',
     'timesheet_calendar_table_url': 'timesheet_dashboard:timesheet_calendar_table_url',
     'reports_dashboard_url': 'timesheet_dashboard:reports_dashboard_url',
-
-    # Reports
-    'employees_report_listboard_url': 'bhp_utility_reports:employees_report_listboard_url',
-    'employee_timesheet_report_listboard_url': 'bhp_utility_reports:employee_timesheet_report_listboard_url',
-    'departments_timesheet_report_listboard_url': 'bhp_utility_reports:departments_timesheet_report_listboard_url'
 }
 
 DASHBOARD_BASE_TEMPLATES = {
@@ -302,23 +296,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'timesheet_listboard_template': 'timesheet_dashboard/timesheet_listboard.html',
     'timesheet_employee_listboard_template': 'timesheet_dashboard/employee_listboard.html',
     'reports_dashboard_template': 'timesheet_dashboard/reports/dashboard.html',
-
-    # Reports
-    'employees_report_listboard_template': 'bhp_utility_reports/employees_listboard.html',
-    'employee_timesheet_report_listboard_template': 'bhp_utility_reports/employee_timesheet_listboard.html',
-    'departments_timesheet_report_listboard_template': 'bhp_utility_reports/departments_timesheet_listboard.html'
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
-
-Q_CLUSTER = {
-    'name': 'DjangORM',
-    'workers': 4,
-    'timeout': 90,
-    'retry': 120,
-    'queue_limit': 50,
-    'bulk': 10,
-    'orm': 'default',
-    'has_replica': True
-}
