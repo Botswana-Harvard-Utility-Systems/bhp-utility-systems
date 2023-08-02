@@ -1,10 +1,9 @@
-from bhp_personnel.models import Employee, Supervisor, Department, Pi
+from bhp_personnel.models import Employee, Supervisor, Department
 import datetime
 
 from dateutil import parser
 from django.core.management.base import BaseCommand
 from django.db.utils import IntegrityError
-from edc_constants.constants import HIDE_FORM
 import openpyxl
 
 
@@ -74,71 +73,42 @@ class Command(BaseCommand):
                     hod=hod,
                     dept_name=department)
 
-                if job_title.lower() == 'principal investigator':
+                try:
+                    Employee.objects.get(employee_code=employee_code,
+                                         email=email)
+                except Employee.DoesNotExist:
 
-                    principal_investigator_exists = Pi.objects.filter(email=email,
-                                                                      first_name=first_name,
-                                                                      last_name=last_name,).exists()
+                    Employee.objects.create(
+                        employee_code=employee_code,
+                        email=email,
+                        job_title=job_title,
+                        supervisor=supervisor,
+                        hired_date=hired_date,
+                        gender=gender,
+                        department=dept,
+                        first_name=first_name,
+                        last_name=last_name,
+                        cell=cell
 
-                    if not principal_investigator_exists:
-                        Pi.objects.create(
-                            first_name=first_name,
-                            last_name=last_name,
-                            gender=gender,
-                            hired_date=hired_date,
-                            cell=cell
+                    )
+                    message = f'''\
+                    ------------------------------------------
+                    Message   : Employee created 
+                    Firstname : {first_name}
+                    Lastname  : {last_name}
+                    E-Mail    : {email} '''
 
-                        )
-
-                        message = f'''\
-                        ------------------------------------------
-                        Message   : Principal investigator created 
-                        Firstname : {first_name}
-                        Lastname  : {last_name}
-                        E-Mail    : {email} '''
-
-                        self.stdout.write(
-                            self.style.SUCCESS(message))
+                    self.stdout.write(
+                        self.style.SUCCESS(message))
 
                 else:
 
-                    try:
-                        Employee.objects.get(email=email,
-                                             first_name=first_name,
-                                             last_name=last_name)
-                    except Employee.DoesNotExist:
+                    message = f'''\
+                    ------------------------------------------
+                    Message   : Employee already exist
+                    Firstname : {first_name}
+                    Lastname  : {last_name}
+                    E-Mail    : {email}'''
 
-                        Employee.objects.create(
-                            employee_code=employee_code,
-                            email=email,
-                            job_title=job_title,
-                            supervisor=supervisor,
-                            hired_date=hired_date,
-                            gender=gender,
-                            department=dept,
-                            first_name=first_name,
-                            last_name=last_name,
-                            cell=cell
-
-                        )
-                        message = f'''\
-                        ------------------------------------------
-                        Message   : Employee created 
-                        Firstname : {first_name}
-                        Lastname  : {last_name}
-                        E-Mail    : {email} '''
-
-                        self.stdout.write(
-                            self.style.SUCCESS(message))
-
-                    else:
-
-                        message = f'''\
-                        ------------------------------------------
-                        Message   : Employee already exist
-                        Firstname : {first_name}
-                        Lastname  : {last_name}
-                        E-Mail    : {email}'''
-
-                        self.stdout.write(
-                            self.style.WARNING(message))
+                    self.stdout.write(
+                        self.style.WARNING(message))
