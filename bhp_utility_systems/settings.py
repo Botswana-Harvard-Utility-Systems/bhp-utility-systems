@@ -171,7 +171,8 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -247,31 +248,42 @@ DASHBOARD_URL_NAMES = {
     'document_dashboard_url': 'document_tracking_dashboard:document_dashboard_url',
     'document_listboard_url': 'document_tracking_dashboard:document_listboard_url',
     'document_url': 'document_tracking_dashboard:document_url',
-    'hard_copy_document_listboard_url': 'document_tracking_dashboard:hard_copy_document_listboard_url',
-    'reception_docs_listboard_url': 'document_tracking_dashboard:reception_docs_listboard_url',
-    'group_documents_listboard_url': 'document_tracking_dashboard:group_documents_listboard_url',
-    'send_hard_copy_listboard_url': 'document_tracking_dashboard:send_hard_copy_listboard_url',
+    'hard_copy_document_listboard_url':
+        'document_tracking_dashboard:hard_copy_document_listboard_url',
+    'reception_docs_listboard_url':
+        'document_tracking_dashboard:reception_docs_listboard_url',
+    'group_documents_listboard_url':
+        'document_tracking_dashboard:group_documents_listboard_url',
+    'send_hard_copy_listboard_url':
+        'document_tracking_dashboard:send_hard_copy_listboard_url',
     'sent_to_me_listboard_url': 'document_tracking_dashboard:sent_to_me_listboard_url',
-    'shared_documents_listboard_url': 'document_tracking_dashboard:shared_documents_listboard_url',
+    'shared_documents_listboard_url':
+        'document_tracking_dashboard:shared_documents_listboard_url',
     'sent_listboard_url': 'document_tracking_dashboard:sent_listboard_url',
 
     # Timesheet
     'timesheet_listboard_url': 'timesheet_dashboard:timesheet_listboard_url',
-    'timesheet_employee_listboard_url': 'timesheet_dashboard:timesheet_employee_listboard_url',
+    'timesheet_employee_listboard_url':
+        'timesheet_dashboard:timesheet_employee_listboard_url',
     'timesheet_home_url': 'timesheet:timesheet_home_url',
     'timesheet_calendar_table_url': 'timesheet_dashboard:timesheet_calendar_table_url',
     'reports_dashboard_url': 'timesheet_dashboard:reports_dashboard_url',
 
     # Reports
-    'employees_report_listboard_url': 'bhp_utility_reports:employees_report_listboard_url',
-    'employee_timesheet_report_listboard_url': 'bhp_utility_reports:employee_timesheet_report_listboard_url',
-    'departments_timesheet_report_listboard_url': 'bhp_utility_reports:departments_timesheet_report_listboard_url'
+    'employees_report_listboard_url':
+        'bhp_utility_reports:employees_report_listboard_url',
+    'employee_timesheet_report_listboard_url':
+        'bhp_utility_reports:employee_timesheet_report_listboard_url',
+    'departments_timesheet_report_listboard_url':
+        'bhp_utility_reports:departments_timesheet_report_listboard_url'
 }
 
 DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'bhp_utility_systems/base.html',
-    'purchase_order_listboard_template': 'procurement_dashboard/purchase_order/listboard.html',
-    'purchase_req_listboard_template': 'procurement_dashboard/purchase_requisition/listboard.html',
+    'purchase_order_listboard_template':
+        'procurement_dashboard/purchase_order/listboard.html',
+    'purchase_req_listboard_template':
+        'procurement_dashboard/purchase_requisition/listboard.html',
     'purchase_order_report_template': 'procurement_dashboard/purchase_order/report.html',
     'credit_card_listboard_template': 'procurement_dashboard/credit_card/listboard.html',
 
@@ -290,23 +302,34 @@ DASHBOARD_BASE_TEMPLATES = {
     'consultant_listboard_template': 'cms_dashboard/consultant/consultant_listboard.html',
     'consultant_dashboard_template': 'cms_dashboard/consultant/consultant_dashboard.html',
     # Document Tracking
-    'document_dashboard_template': 'document_tracking_dashboard/document/document_dashboard.html',
-    'document_listboard_template': 'document_tracking_dashboard/document/document_listboard.html',
-    'reception_docs_listboard_template': 'document_tracking_dashboard/document/reception_docs_listboard.html',
-    'hard_copy_document_listboard_template': 'document_tracking_dashboard/document/hard_copy_document_listboard.html',
-    'send_hard_copy_listboard_template': 'document_tracking_dashboard/document/send_hard_copy_listboard.html',
-    'sent_document_listboard_template': 'document_tracking_dashboard/document/sent_document_listboard.html',
-    'sent_to_me_listboard_template': 'document_tracking_dashboard/document/sent_to_me_listboard.html',
-    'shared_documents_listboard_template': 'document_tracking_dashboard/document/shared_documents_listboard.html',
+    'document_dashboard_template':
+        'document_tracking_dashboard/document/document_dashboard.html',
+    'document_listboard_template':
+        'document_tracking_dashboard/document/document_listboard.html',
+    'reception_docs_listboard_template':
+        'document_tracking_dashboard/document/reception_docs_listboard.html',
+    'hard_copy_document_listboard_template':
+        'document_tracking_dashboard/document/hard_copy_document_listboard.html',
+    'send_hard_copy_listboard_template':
+        'document_tracking_dashboard/document/send_hard_copy_listboard.html',
+    'sent_document_listboard_template':
+        'document_tracking_dashboard/document/sent_document_listboard.html',
+    'sent_to_me_listboard_template':
+        'document_tracking_dashboard/document/sent_to_me_listboard.html',
+    'shared_documents_listboard_template':
+        'document_tracking_dashboard/document/shared_documents_listboard.html',
     # Timesheet
     'timesheet_listboard_template': 'timesheet_dashboard/timesheet_listboard.html',
-    'timesheet_employee_listboard_template': 'timesheet_dashboard/employee_listboard.html',
+    'timesheet_employee_listboard_template':
+        'timesheet_dashboard/employee_listboard.html',
     'reports_dashboard_template': 'timesheet_dashboard/reports/dashboard.html',
 
     # Reports
     'employees_report_listboard_template': 'bhp_utility_reports/employees_listboard.html',
-    'employee_timesheet_report_listboard_template': 'bhp_utility_reports/employee_timesheet_listboard.html',
-    'departments_timesheet_report_listboard_template': 'bhp_utility_reports/departments_timesheet_listboard.html'
+    'employee_timesheet_report_listboard_template':
+        'bhp_utility_reports/employee_timesheet_listboard.html',
+    'departments_timesheet_report_listboard_template':
+        'bhp_utility_reports/departments_timesheet_listboard.html'
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -322,3 +345,17 @@ Q_CLUSTER = {
     'orm': 'default',
     'has_replica': True
 }
+
+if 'test' in sys.argv:
+    class DisableMigrations:
+
+        def __contains__(self, item):
+            return True
+
+        def __getitem__(self, item):
+            return None
+
+
+    MIGRATION_MODULES = DisableMigrations()
+    PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher',)
+    DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
