@@ -1,0 +1,83 @@
+arabic-reshaper==2.1.3
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
+arrow==1.2.1
+asgiref==3.5.0
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/bhp-personnel.git@af33000e5567ca27b502ee5e5d7012a390cac139#egg=bhp_personnel
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/bhp-personnel-dashboard.git@42c02039b685fcfe2768b3a37f4c884396f4b3f9#egg=bhp_personnel_dashboard
+blessed==1.19.1
+cffi==1.15.0
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/cms-dashboard.git@5a6d08d2580583f62604a8ce0c8ed12bbf079948#egg=cms_dashboard
+Django==4.0.1
+django-admin-list-filter-dropdown==1.0.3
+django-crispy-forms==1.14.0
+django-crypto-fields==0.1.14
+django-debug-toolbar==3.2.4
+django-extensions==3.1.5
+django-ipware==4.0.2
+django-js-reverse==0.10.1a0
+django-logentry-admin==1.1.0
+django-picklefield==3.0.1
+django-q==1.3.9
+django-revision==0.1.14
+django-simple-history==3.0.0
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/document-tracking.git@0ad345af8951b5279d34388192d635e9aff7c4ac#egg=document_tracking
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/document-tracking-dashboard.git@a415099672ddd10d83d9c1088b27a75ad1f0cdae#egg=document_tracking_dashboard
+docutils==0.18.1
+edc-appointment==0.2.20
+edc-base==0.2.28
+edc-constants==0.2.9
+edc-dashboard==0.3.3
+edc-data-manager==0.1.8
+edc-device==0.2.7
+edc-facility==0.1.4
+edc-fieldsets==0.1.2
+edc-form-validators==0.1.3
+edc-identifier==0.2.12
+edc-lab==0.2.23
+edc-label==0.1.9
+edc-metadata==0.2.13
+edc-model-admin==0.1.2
+edc-model-wrapper==0.1.7
+edc-navbar==0.1.5
+edc-protocol==0.1.5
+edc-reference==0.1.14
+edc-search==0.1.6
+edc-sms==0.1.1
+edc-subject-dashboard==0.2.6
+edc-visit-schedule==0.2.13
+Faker==11.3.0
+future==0.18.2
+gitdb==4.0.9
+GitPython==3.1.26
+html5lib==1.1
+model-mommy==2.0.0
+mysqlclient==2.1.0
+numpy==1.22.1
+pandas==1.4.0
+pdf2image==1.16.0
+Pillow==9.0.0
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/procurement.git@8b4f3e402133de201be530b1de05df65b7d116cc#egg=procurement
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/procurement-dashboard.git@78ebb447fb35cb6df145da97cd7c404cae3eca88#egg=procurement_dashboard
+pycparser==2.21
+pycrypto==2.6.1
+pycups==2.0.1
+PyMySQL==1.0.2
+PyPDF2==1.26.0
+python-bidi==0.4.2
+python-dateutil==2.8.2
+python-memcached==1.59
+pytz==2021.3
+redis==3.5.3
+reportlab==3.6.6
+six==1.16.0
+smmap==5.0.0
+sqlparse==0.4.2
+text-unidecode==1.3
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/timesheet.git@bcfceccefc8f4c497b80ca6bdacaf51f3345da7b#egg=timesheet
+-e git+https://github.com/Botswana-Harvard-Utility-Systems/timesheet-dashboard.git@8ceb79f3b008e01cd562cc5057191cc161671dae#egg=timesheet_dashboard
+tqdm==4.62.3
+wcwidth==0.2.5
+webencodings==0.5.1
+xhtml2pdf==0.2.5
+xlwt==1.3.0
