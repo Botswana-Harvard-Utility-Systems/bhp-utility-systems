@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 APP_NAME = 'bhp_utility_systems'
 
-INDEX_PAGE = 'bhpus.bhp.org.bw'
+INDEX_PAGE = 'utility.bhp.org.bw'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -45,7 +45,7 @@ LOGIN_REDIRECT_URL = 'home_url'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['bhpus.bhp.org.bw', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['utility.bhp.org.bw', 'localhost', '127.0.0.1']
 
 CONFIG_FILE = f'{APP_NAME}.ini'
 
@@ -80,7 +80,6 @@ INSTALLED_APPS = [
     'django_q',
     'django_js_reverse',
     'crispy_forms',
-    'edc_data_manager.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_model_admin.apps.AppConfig',
@@ -96,8 +95,6 @@ INSTALLED_APPS = [
     'bhp_utility_systems.apps.EdcFacilityAppConfig',
     'bhp_utility_systems.apps.EdcNavBarAppConfig',
     'bhp_utility_systems.apps.AppConfig',
-    'document_tracking.apps.AppConfig',
-    'document_tracking_dashboard.apps.AppConfig',
     'django_admin_listfilter_dropdown',
     'bhp_utility_reports.apps.AppConfig',
 ]
@@ -243,18 +240,6 @@ DASHBOARD_URL_NAMES = {
     'cms_url': 'cms_dashboard:cms_url',
     'reports_url': 'cms_dashboard:reports_url',
 
-    # Document tracking
-    'document_dashboard_url': 'document_tracking_dashboard:document_dashboard_url',
-    'document_listboard_url': 'document_tracking_dashboard:document_listboard_url',
-    'document_url': 'document_tracking_dashboard:document_url',
-    'hard_copy_document_listboard_url': 'document_tracking_dashboard:hard_copy_document_listboard_url',
-    'reception_docs_listboard_url': 'document_tracking_dashboard:reception_docs_listboard_url',
-    'group_documents_listboard_url': 'document_tracking_dashboard:group_documents_listboard_url',
-    'send_hard_copy_listboard_url': 'document_tracking_dashboard:send_hard_copy_listboard_url',
-    'sent_to_me_listboard_url': 'document_tracking_dashboard:sent_to_me_listboard_url',
-    'shared_documents_listboard_url': 'document_tracking_dashboard:shared_documents_listboard_url',
-    'sent_listboard_url': 'document_tracking_dashboard:sent_listboard_url',
-
     # Timesheet
     'timesheet_listboard_url': 'timesheet_dashboard:timesheet_listboard_url',
     'timesheet_employee_listboard_url': 'timesheet_dashboard:timesheet_employee_listboard_url',
@@ -289,15 +274,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'pi_listboard_template': 'cms_dashboard/pi/pi_listboard.html',
     'consultant_listboard_template': 'cms_dashboard/consultant/consultant_listboard.html',
     'consultant_dashboard_template': 'cms_dashboard/consultant/consultant_dashboard.html',
-    # Document Tracking
-    'document_dashboard_template': 'document_tracking_dashboard/document/document_dashboard.html',
-    'document_listboard_template': 'document_tracking_dashboard/document/document_listboard.html',
-    'reception_docs_listboard_template': 'document_tracking_dashboard/document/reception_docs_listboard.html',
-    'hard_copy_document_listboard_template': 'document_tracking_dashboard/document/hard_copy_document_listboard.html',
-    'send_hard_copy_listboard_template': 'document_tracking_dashboard/document/send_hard_copy_listboard.html',
-    'sent_document_listboard_template': 'document_tracking_dashboard/document/sent_document_listboard.html',
-    'sent_to_me_listboard_template': 'document_tracking_dashboard/document/sent_to_me_listboard.html',
-    'shared_documents_listboard_template': 'document_tracking_dashboard/document/shared_documents_listboard.html',
+
     # Timesheet
     'timesheet_listboard_template': 'timesheet_dashboard/timesheet_listboard.html',
     'timesheet_employee_listboard_template': 'timesheet_dashboard/employee_listboard.html',
