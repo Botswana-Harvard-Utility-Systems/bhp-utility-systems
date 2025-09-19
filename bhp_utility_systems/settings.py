@@ -83,8 +83,6 @@ INSTALLED_APPS = [
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_model_admin.apps.AppConfig',
-    'procurement_dashboard.apps.AppConfig',
-    'procurement.apps.AppConfig',
     'bhp_personnel.apps.AppConfig',
     'cms_dashboard.apps.AppConfig',
     'timesheet.apps.AppConfig',
