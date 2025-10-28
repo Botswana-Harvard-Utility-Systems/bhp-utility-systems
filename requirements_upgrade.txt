@@ -1,6 +1,6 @@
 git+https://github.com/botswana-harvard/django-crypto-fields.git@0.1.14#egg=django-crypto-fields
 git+https://github.com/botswana-harvard/django-revision.git@develop#egg=django-revision
-git+https://github.com/botswana-harvard/edc-base.git@edc-upgrades#egg=edc-base
+git+https://github.com/botswana-harvard/edc-base.git@edc-upgrade#egg=edc-base
 git+https://github.com/botswana-harvard/edc-constants.git@develop#egg=edc-constants
 git+https://github.com/botswana-harvard/edc-dashboard.git@edc-upgrade#egg=edc-dashboard
 git+https://github.com/botswana-harvard/edc-device.git@develop#egg=edc-device
