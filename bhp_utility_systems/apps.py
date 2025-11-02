@@ -17,7 +17,8 @@ class AppConfig(DjangoAppConfig):
 
 class EdcBaseAppConfig(BaseEdcBaseAppConfig):
     project_name = 'BHP Utility Systems'
-    institution = 'Botswana-Harvard AIDS Institute'
+    institution = 'Botswana Harvard Health Partnership'
+    disclaimer = 'For internal personnel management'
 
 
 class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
@@ -43,6 +44,7 @@ class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
 
 class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
     identifier_prefix = '199'
+
 
 class EdcNavBarAppConfig(BaseEdcNavbarAppConfig):
     default_navbar_name = 'default'

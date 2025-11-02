@@ -7,213 +7,40 @@
 
 
 {% block extra-styles %}
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" href="{% static 'bhp_utility_systems/css/style.css' %}">
-<link rel="stylesheet" href="{% static 'bhp_utility_systems/css/timer.css' %}">
-<script src="{% static 'bhp_utility_systems/js/timer.js' %}"></script>
-
-<style>
-    .my-card {
-        position: absolute;
-        left: 40%;
-        top: -20px;
-        border-radius: 50%;
-        
-    }
-    
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 90px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-    }
-    
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 5px;
-        border: 1px solid #888;
-        width: 57%;
-        height: 90%;
-    }
-    
-    /* The Close Button */
-    .close {
-        color: Tomato;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-        color: Tomato;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
+	<!-- App styles -->
+	<link href="{% static 'bhp_utility_systems/css/bhp_utility_systems.css' %}" rel="stylesheet">
 {% endblock extra-styles %}
 
+
 {% block main %}
+
+<section class="py-2">
+   <div class="row align-items-center g-3">
+     <div class="col-lg-8">
+       <h1 class="display-6 fw-semibold mb-1">Welcome{% if request.user.is_authenticated %}, {{ request.user.first_name }}{% endif %}</h1>
+       <p class="text-secondary mb-0">All your internal tools in one place. Start with Timesheets; Contracts & Grants are coming soon.</p>
+     </div>
+     <div class="col-lg-4 text-lg-end">
+       <form action="{# optional search later #}" method="get" class="d-flex gap-2">
+         <input class="form-control" type="search" placeholder="Search modules…" disabled>
+         <button class="btn btn-outline-secondary" type="button" disabled><i class="bi bi-search"></i></button>
+       </form>
+     </div>
+   </div>
+ </section>
+  
+ <section class="mt-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">  
+    	{% include 'bhp_utility_systems/_module_card.html' with title='Timesheets' icon='bi-clock-history' description='Log hours, off-days, and half-days. Review and approve timesheets.' url_name='timesheet:timesheet_home_url' stats=timesheet_stats status='live' %}
+
+    	{% if is_hr %}
+		 	{% include 'bhp_utility_systems/_module_card.html' with title='Manage Employees' icon='bi bi-person-lines-fill' description='Manage employees, Add/Edit employee details (HR only).' url_name='bhp_personnel_dashboard:employee_listboard_url' stats=employee_stats status='live' %}
+    	{% endif %}
+    </div>
+ </section>
 {% endblock main %}
+
 {% block extra-scripts-bottom %}
-
-<h1 style="margin-top: 10px">Utility Modules</h1>
-<hr style="width:500px;color: black;">
-<div class="wrapper" style="margin-top: 70px">
-    <div class="card">
-        <h3 class="card-title">PROCUREMENT</h3>
-        <img src="{% static 'bhp_utility_systems/images/pro.png' %}"
-             alt="Image" class="img-feature img-fluid" style="width:300px">
-        <a href="{% url 'procurement_dashboard:procurement_url' %}">
-            <button class="card-btn" style="display: none" id="procurement">
-                OPEN PROCUREMENT
-            </button>
-        </a>
-        <div class="wrapper" id="wrapper">
-            <h4>WE ARE LAUNCHING IN</h4>
-            <div class="time">
-                <div class="day"><p id="day">00</p>
-                    <p>days</p></div>
-                <span>:</span>
-                <div class="hour"><p id="hour">00</p>
-                    <p>hours</p></div>
-                <span>:</span>
-                <div class="minute"><p id="minute">00</p>
-                    <p>minutes</p></div>
-                <span>:</span>
-                <div class="second"><p id="second">00</p>
-                    <p>seconds</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <h3 class="card-title">TIMESHEETS</h3>
-        <img src="{% static 'bhp_utility_systems/images/time-sheet.png' %}"
-             alt="Image" class="img-feature img-fluid" style="width:300px">
-        
-        <span style="display: inline;">
-  <a href="{% url 'timesheet:timesheet_home_url' %}" data-inline="true">
-          <button class="card-btn" style="display: none" id="timesheet">OPEN TIMESHEET</button>
-        </a>
-           <br>
-            <br>
-            <br>
-</span>
-        <a id="myBtn" style="color:white;cursor: pointer; font-size:16px;" ><i class="fas fa-file-pdf"></i> Click here for user manual </a>
-    
-    </div>
-    <div id="myModal" class="modal">
-        
-        <!-- Modal content -->
-        <div class="modal-content">
-                <span class="close"
-                      onclick="document.getElementById('myModal').style.display='none'"><i
-                        class="fas fa-window-close"
-                        style="--fa-primary-color: tomato"></i></span>
-            <embed src="{% static 'bhp_utility_systems/docs/Timesheet.pdf' %}"
-                   type="application/pdf" width="100%" height="95%">
-            </object>
-        </div>
-        <div class="wrapper" id="wrapper1">
-            <h4>WE ARE LAUNCHING IN</h4>
-            <div class="time">
-                <div class="day"><p id="day1">00</p>
-                    <p>days</p></div>
-                <span>:</span>
-                <div class="hour"><p id="hour1">00</p>
-                    <p>hours</p></div>
-                <span>:</span>
-                <div class="minute"><p id="minute1">00</p>
-                    <p>minutes</p></div>
-                <span>:</span>
-                <div class="second"><p id="second1">00</p>
-                    <p>seconds</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <h3 class="card-title">DOCUMENT TRACKING</h3>
-        <img src="{% static 'bhp_utility_systems/images/documents.png' %}"
-             alt="Image" class="img-feature img-fluid"
-             style="width:255px;margin-top: 33px">
-        <a href="{% url 'document_tracking_dashboard:document_url' %}">
-            <button class="card-btn" style="display: none" id="documents">OPEN
-                                                                          DOCUMENTS
-            </button>
-        </a>
-        <div class="wrapper" id="wrapper2">
-            <h4>WE ARE LAUNCHING IN</h4>
-            <div class="time">
-                <div class="day"><p id="day2">00</p>
-                    <p>days</p></div>
-                <span>:</span>
-                <div class="hour"><p id="hour2">00</p>
-                    <p>hours</p></div>
-                <span>:</span>
-                <div class="minute"><p id="minute2">00</p>
-                    <p>minutes</p></div>
-                <span>:</span>
-                <div class="second"><p id="second2">00</p>
-                    <p>seconds</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <h3 class="card-title">CONTRACT MANAGEMENT</h3>
-        <img src="{% static 'bhp_utility_systems/images/contrac.png' %}"
-             alt="Image" class="img-feature img-fluid" style="width:300px">
-        <div>
-            <a href="{% url 'cms_dashboard:cms_url' %}">
-                <button class="card-btn" style="display: none" id="contract">
-                    OPEN CONTRACT
-                </button>
-            </a>
-        </div>
-        <div class="wrapper" id="wrapper3">
-            <h4>WE ARE LAUNCHING IN</h4>
-            <div class="time">
-                <div class="day"><p id="day3">00</p>
-                    <p>days</p></div>
-                <span>:</span>
-                <div class="hour"><p id="hour3">00</p>
-                    <p>hours</p></div>
-                <span>:</span>
-                <div class="minute"><p id="minute3">00</p>
-                    <p>minutes</p></div>
-                <span>:</span>
-                <div class="second"><p id="second3">00</p>
-                    <p>seconds</p></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="overlay">
-        <article class="modal">
-            
-            <section class="modal__content">
-                <div>
-                    <iframe src="https://codepen.io/sesanyane/pen/wvJRyMK?editors=1010"
-                            height="400" width="850"></iframe>
-                </div>
-                
-                <button class="toggle">
-                    Close
-                </button>
-            </section>
-        </article>
-    </div>
-
-</div>
 <script>
     // Get the modal
     var modal = document.getElementById("myModal");
