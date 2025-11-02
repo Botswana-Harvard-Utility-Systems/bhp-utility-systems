@@ -30,9 +30,12 @@
  </section>
   
  <section class="mt-4">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-   
-      {% include 'bhp_utility_systems/_module_card.html' with title='Timesheets' icon='bi-clock-history' description='Log hours, off-days, and half-days. Export and approve timesheets.' url_name='timesheet:timesheet_home_url' stats=timesheet_stats status='live' %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">  
+    	{% include 'bhp_utility_systems/_module_card.html' with title='Timesheets' icon='bi-clock-history' description='Log hours, off-days, and half-days. Review and approve timesheets.' url_name='timesheet:timesheet_home_url' stats=timesheet_stats status='live' %}
+
+    	{% if is_hr %}
+		 	{% include 'bhp_utility_systems/_module_card.html' with title='Manage Employees' icon='bi bi-person-lines-fill' description='Manage employees, Add/Edit employee details (HR only).' url_name='bhp_personnel_dashboard:employee_listboard_url' stats=employee_stats status='live' %}
+    	{% endif %}
     </div>
  </section>
 {% endblock main %}

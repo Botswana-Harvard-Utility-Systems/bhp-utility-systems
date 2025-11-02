@@ -20,6 +20,7 @@ git+https://github.com/Botswana-Harvard-Utility-Systems/bhp-personnel.git@develo
 git+https://github.com/Botswana-Harvard-Utility-Systems/bhp-personnel-dashboard.git@develop#egg=bhp-personnel-dashboard
 git+https://github.com/Botswana-Harvard-Utility-Systems/timesheet.git@upgrades#egg=timesheet
 git+https://github.com/Botswana-Harvard-Utility-Systems/timesheet-dashboard.git@upgrades#egg=timesheet-dashboard
+git+https://github.com/Botswana-Harvard-Utility-Systems/bhp-utility-reports.git@develop#egg=bhp-utility-reports
 --pre xhtml2pdf
 django-admin-list-filter-dropdown
 pdf2image
@@ -29,3 +30,4 @@ xhtml2pdf
 mysqlclient
 pandas
 django-crispy-forms
+django-countries

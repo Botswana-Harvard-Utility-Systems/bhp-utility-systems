@@ -61,8 +61,8 @@ EMAIL_BACKEND = config['email_conf'].get('email_backend')
 EMAIL_HOST = config['email_conf'].get('email_host')
 EMAIL_USE_TLS = config['email_conf'].get('email_use_tls', False)
 EMAIL_PORT = config['email_conf'].get('email_port')
-EMAIL_HOST_USER = config['email_conf'].get('email_user')
-DEFAULT_FROM_EMAIL = config['email_conf'].get('email_user')
+EMAIL_HOST_USER = config['email_conf'].get('email_host_user')
+DEFAULT_FROM_EMAIL = config['email_conf'].get('email_host_user')
 EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
 
 # Application definition
@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'edc_device.apps.AppConfig',
     'edc_model_admin.apps.AppConfig',
     'bhp_personnel.apps.AppConfig',
+    'bhp_personnel_dashboard.apps.AppConfig',
     'cms_dashboard.apps.AppConfig',
     'timesheet.apps.AppConfig',
     'timesheet_dashboard.apps.AppConfig',
@@ -220,11 +221,13 @@ DASHBOARD_URL_NAMES = {
     'email_report_url': 'procurement_dashboard:email_report_url',
     'credit_card_listboard_url': 'procurement_dashboard:credit_card_listboard_url',
 
+    # Personnel
+    'employee_listboard_url': 'bhp_personnel_dashboard:employee_listboard_url',
+
     # CMS url name
     'appraisal_dashboard_url': 'cms_dashboard:appraisal_dashboard_url',
     'appraisal_listboard_url': 'cms_dashboard:appraisal_listboard_url',
     'employee_dashboard_url': 'cms_dashboard:employee_dashboard_url',
-    'employee_listboard_url': 'cms_dashboard:employee_listboard_url',
     'emp_contract_listboard_url': 'cms_dashboard:emp_contract_listboard_url',
     'pi_contract_listboard_url': 'cms_dashboard:pi_contract_listboard_url',
     'pi_listboard_url': 'cms_dashboard:pi_listboard_url',
@@ -259,6 +262,9 @@ DASHBOARD_BASE_TEMPLATES = {
     'credit_card_listboard_template': 'procurement_dashboard/credit_card/listboard.html',
 
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
+
+    # BHP Personnel
+    'employee_listboard_template': 'bhp_personnel_dashboard/employee/employee_listboard.html',
     # CMS templates
     'appraisal_dashboard_template': 'cms_dashboard/employee/appraisal_dashboard.html',
     'appraisal_listboard_template': 'cms_dashboard/employee/appraisal_listboard.html',
@@ -267,7 +273,6 @@ DASHBOARD_BASE_TEMPLATES = {
                                        'allcontracts_listboard.html',
     'dashboard_base_template': 'cms/base.html',
     'employee_dashboard_template': 'cms_dashboard/employee/employee_dashboard.html',
-    'employee_listboard_template': 'cms_dashboard/employee/employee_listboard.html',
     'pi_dashboard_template': 'cms_dashboard/pi/pi_dashboard.html',
     'pi_listboard_template': 'cms_dashboard/pi/pi_listboard.html',
     'consultant_listboard_template': 'cms_dashboard/consultant/consultant_listboard.html',

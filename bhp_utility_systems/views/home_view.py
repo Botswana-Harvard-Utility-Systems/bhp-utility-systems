@@ -9,3 +9,12 @@ class HomeView(EdcBaseViewMixin, NavbarViewMixin, TemplateView):
     navbar_name = 'default'
     navbar_selected_item = 'home'
 
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        is_hr = self.request.user.groups.filter(
+            name='HR').exists()
+        context.update({'is_hr': is_hr})
+
+        return context
