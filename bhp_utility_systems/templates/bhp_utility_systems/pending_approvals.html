@@ -1,0 +1,114 @@
+{% extends 'bhp_utility_systems/base.html' %}
+{% block main %}
+<div class="container-fluid mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">
+      Pending Approvals
+      <span class="badge bg-warning text-dark ms-2">{{ total_pending }}</span>
+    </h4>
+  </div>
+
+  <!-- Filters -->
+  <form method="get" class="row g-2 mb-4">
+    <div class="col-md-3">
+      <input type="text" name="search" class="form-control"
+             placeholder="Search name or ID..." value="{{ search }}">
+    </div>
+    <div class="col-md-3">
+      <select name="department" class="form-select">
+        <option value="">All Departments</option>
+        {% for dept in departments %}
+          <option value="{{ dept.dept_name }}"
+            {% if selected_department == dept.dept_name %}selected{% endif %}>
+            {{ dept.dept_name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <input type="month" name="month" class="form-control" value="{{ selected_month }}">
+    </div>
+    <div class="col-md-3 d-flex gap-2">
+      <button type="submit" class="btn btn-primary">Filter</button>
+      <a href="?" class="btn btn-outline-secondary">Clear</a>
+    </div>
+  </form>
+
+  <!-- Table -->
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Employee</th>
+            <th>ID</th>
+            <th>Department</th>
+            <th>Month</th>
+            <th>Submitted</th>
+            <th>Supervisor</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ts in timesheets %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ ts.employee.first_name }} {{ ts.employee.last_name }}</td>
+            <td><small class="text-muted">{{ ts.employee.identifier }}</small></td>
+            <td>{{ ts.employee.department.dept_name }}</td>
+            <td>{{ ts.month|date:"F Y" }}</td>
+            <td>
+              {% if ts.submitted_datetime %}
+                {{ ts.submitted_datetime|date:"d M Y" }}
+              {% else %}
+                <span class="text-muted">—</span>
+              {% endif %}
+            </td>
+            <td>
+              {{ ts.employee.supervisor.first_name }}
+              {{ ts.employee.supervisor.last_name }}
+            </td>
+            <td>
+              <a href="{% url 'timesheet_dashboard:timesheet_calendar_table_url' ts.employee.identifier ts.month.year ts.month.month %}?p_role=Supervisor"
+                 class="btn btn-sm btn-outline-primary">
+                Review
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="8" class="text-center text-secondary py-4">
+              No pending timesheets found.
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  {% if is_paginated %}
+  <nav class="mt-3">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ search }}&department={{ selected_department }}&month={{ selected_month }}">Previous</a>
+        </li>
+      {% endif %}
+      <li class="page-item disabled">
+        <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      </li>
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ search }}&department={{ selected_department }}&month={{ selected_month }}">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+
+</div>
+{% endblock main %}

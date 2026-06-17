@@ -15,6 +15,7 @@ import os
 import sys
 from pathlib import Path
 
+
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -142,24 +143,23 @@ DB_PASSWORD = mysql_config['mysql']['password']
 DB_NAME = mysql_config['mysql']['database']
 PORT = mysql_config['mysql']['port']
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'test.sqlite',
-#     }
-#  }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': HOST,  # Or an IP Address that your DB is hosted on
-        'PORT': PORT,
+        'NAME': 'utility',
+        'USER': 'root',
+        'PASSWORD': 'qwerty123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
         "init_command": "SET foreign_key_checks = 0;",
     }
-
 }
 
 # Password validation
@@ -247,6 +247,8 @@ DASHBOARD_URL_NAMES = {
     'timesheet_employee_listboard_url':
         'timesheet_dashboard:timesheet_employee_listboard_url',
     'timesheet_home_url': 'timesheet:timesheet_home_url',
+    'pending_approvals': 'pending_approvals',
+    'hr_reports': 'hr_reports',
     'timesheet_calendar_table_url': 'timesheet_dashboard:timesheet_calendar_table_url',
     'reports_dashboard_url': 'timesheet_dashboard:reports_dashboard_url',
 
@@ -326,3 +328,4 @@ if 'test' in sys.argv:
     MIGRATION_MODULES = DisableMigrations()
     PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher',)
     DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
+

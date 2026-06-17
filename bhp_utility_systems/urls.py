@@ -10,10 +10,11 @@ from edc_identifier.admin_site import edc_identifier_admin
 from bhp_personnel.admin_site import bhp_personnel_admin
 from timesheet.admin_site import timesheet_admin
 
-from .views import HomeView, AdministrationView
-
+from .views import HomeView, AdministrationView, PendingApprovalsView, HRReportsView
+from bhp_utility_systems.views.hr_reports import HRReportsView
 
 urlpatterns = [
+    path('accounts/logout/', auth_views.LogoutView.as_view(http_method_names=['get', 'post']), name='logout'),
     path('accounts/', include('edc_base.auth.urls')),
     path('edc_base/', include('edc_base.urls')),
     path('edc_device/', include('edc_device.urls')),
@@ -39,16 +40,18 @@ urlpatterns = [
              url=reverse_lazy(
                  'admin:app_list', kwargs={'app_label': 'bhp_personnel'}),
              permanent=False
-             ),
+         ),
          name='bhp_personnel_models_url'
          ),
 
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
          name='switch_sites_url'),
+
+    path('timesheet/pending/', PendingApprovalsView.as_view(), name='pending_approvals'),
+    path('reports/hr/', HRReportsView.as_view(), name='hr_reports'),
+
     path('home/', HomeView.as_view(), name='home_url'),
     path('', HomeView.as_view(), name='home_url'),
-
-
 ]
 
 urlpatterns += [
@@ -58,11 +61,9 @@ urlpatterns += [
              success_url='/'),
          name='change_password'
          ),
-    # Forget Password
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
              template_name='users/password_reset_email.html',
-             # success_url='/login/'
          ),
          name='password_reset'),
     path('password-reset/done/',
