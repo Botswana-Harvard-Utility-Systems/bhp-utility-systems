@@ -48,3 +48,8 @@ class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
 
 class EdcNavBarAppConfig(BaseEdcNavbarAppConfig):
     default_navbar_name = 'default'
+
+
+class EdcNavbarAppConfig(BaseEdcNavbarAppConfig):
+    default_navbar_name = 'default'
+    navbars = 'bhp_utility_systems.navbars'
