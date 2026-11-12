@@ -1,0 +1,26 @@
+/* Reusable list and table components for employee timesheets and timesheet records. */
+.utility-list-page { --list-border:#e2e8f0; --list-muted:#64748b; --list-surface:#f8fafc; }
+.list-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:20px; }
+.list-heading h1 { font-size:26px; font-weight:700; margin:0 0 5px; }
+.list-breadcrumb { font-size:13px; color:var(--list-muted); }
+.utility-list-page .btn { white-space:nowrap; border-radius:6px; font-size:14px; padding:8px 13px; }
+.utility-list-page .btn-sm { padding:5px 10px; font-size:13px; }
+.list-card { border:1px solid var(--list-border); border-radius:10px; background:#fff; }
+.list-toolbar { display:flex; align-items:flex-end; flex-wrap:wrap; gap:12px; padding:18px; background:var(--list-surface); border-bottom:1px solid var(--list-border); border-radius:10px 10px 0 0; }
+.list-toolbar label { display:block; font-size:12px; color:var(--list-muted); margin-bottom:5px; font-weight:600; }
+.list-toolbar .form-control,.list-toolbar .form-select { font-size:14px; min-height:38px; border-radius:6px; }
+.list-search { flex:1; min-width:200px; }
+.list-select { min-width:165px; }
+.list-table { width:100%; margin:0; font-size:14px; }
+.list-table thead th { background:var(--list-surface); color:var(--list-muted); font-size:12px; font-weight:600; padding:13px 16px; border-bottom:1px solid var(--list-border); white-space:nowrap; }
+.list-table td { padding:15px 16px; vertical-align:middle; border-bottom:1px solid #eef2f6; }
+.list-table tbody tr:last-child td { border-bottom:0; }
+.list-primary { font-weight:600; color:#1e293b; }
+.list-muted { color:var(--list-muted); }
+.list-badge { display:inline-block; font-size:12px; font-weight:500; padding:4px 9px; border-radius:5px; background:#eef2f6; color:#475569; white-space:nowrap; }
+.list-badge--submitted { background:#e0f2fe; color:#0369a1; }
+.list-badge--approved,.list-badge--verified { background:#dcfce7; color:#166534; }
+.list-badge--rejected { background:#fee2e2; color:#991b1b; }
+.list-footer { padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--list-border); color:var(--list-muted); font-size:13px; }
+.panel-extended { min-height:200px; overflow-y:scroll; }
+@media(max-width:700px) { .list-heading { align-items:flex-start; } .list-toolbar { align-items:stretch; } .list-search { flex-basis:100%; } .list-select { flex:1; } }
