@@ -16,14 +16,9 @@ $(document).ready(function(){
 </script>
 {% endblock extra-scripts %} 
 
-{% block extra-styles %}
+{% block extra-css %}
 {{ block.super }}
-<style>
-  .panel-extended {
-    min-height: 200px;
-    overflow-y: scroll;
-  }
-  </style>
+<link rel="stylesheet" href="{% static 'bhp_utility_systems/css/tables.css' %}">
 {% endblock %}
 
 
